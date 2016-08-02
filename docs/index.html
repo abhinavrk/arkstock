@@ -1,0 +1,3403 @@
+<!doctype html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+    <title>arkstock API documentation</title>
+    <meta name="description" content="" />
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+  
+  <style type="text/css">
+  
+* {
+  box-sizing: border-box;
+}
+/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    background: #fff; /* 1 */
+    color: #000; /* 2 */
+    font-size: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 4 */
+    -ms-text-size-adjust: 100%; /* 4 */
+}
+
+/**
+ * Address `font-family` inconsistency between `textarea` and other form
+ * elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: sans-serif;
+}
+
+/**
+ * Address margins handled incorrectly in IE 6/7.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address font sizes and margins set differently in IE 6/7.
+ * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
+ * and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1em 40px;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ * Known issue: no IE 6/7 normalization.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 6/7/8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+p,
+pre {
+    margin: 1em 0;
+}
+
+/**
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+
+q {
+    quotes: none;
+}
+
+/**
+ * Address `quotes` property not supported in Safari 4.
+ */
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+dl,
+menu,
+ol,
+ul {
+    margin: 1em 0;
+}
+
+dd {
+    margin: 0 0 0 40px;
+}
+
+/**
+ * Address paddings set differently in IE 6/7.
+ */
+
+menu,
+ol,
+ul {
+    padding: 0 0 0 40px;
+}
+
+/**
+ * Correct list images handled incorrectly in IE 7.
+ */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+  </style>
+
+  <style type="text/css">
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+  body {
+    background: #fff;
+    font-family: "Source Sans Pro", "Helvetica Neueue", Helvetica, sans;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6em;
+  }
+  #content {
+    width: 70%;
+    max-width: 850px;
+    float: left;
+    padding: 30px 60px;
+    border-left: 1px solid #ddd;
+  }
+  #sidebar {
+    width: 25%;
+    float: left;
+    padding: 30px;
+    overflow: hidden;
+  }
+  #nav {
+    font-size: 130%;
+    margin: 0 0 15px 0;
+  }
+
+  #top {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    font-size: .85em;
+    text-transform: uppercase;
+  }
+
+  #footer {
+    font-size: .75em;
+    padding: 5px 30px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+  }
+    #footer p {
+      margin: 0 0 0 30px;
+      display: inline-block;
+    }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 300;
+  }
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.1em;
+    margin: 0 0 .50em 0;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    margin: 1em 0 .50em 0;
+  }
+
+  h3 {
+    margin: 25px 0 10px 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 105%;
+  }
+
+  a {
+    color: #058;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+  }
+
+  a:hover {
+    color: #e08524;
+    transition: color .3s ease-in-out;
+  }
+
+  pre, code, .mono, .name {
+    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
+  }
+
+  .title .name {
+    font-weight: bold;
+  }
+  .section-title {
+    margin-top: 2em;
+  }
+  .ident {
+    color: #900;
+  }
+
+  code {
+    background: #f9f9f9;
+  } 
+
+  pre {
+    background: #fefefe;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 0 #f3f3f3;
+    margin: 0 30px;
+    padding: 15px 30px;
+  }
+
+  .codehilite {
+    margin: 0 30px 10px 30px;
+  }
+
+    .codehilite pre {
+      margin: 0;
+    }
+    .codehilite .err { background: #ff3300; color: #fff !important; } 
+
+  table#module-list {
+    font-size: 110%;
+  }
+
+    table#module-list tr td:first-child {
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    table#module-list td {
+      vertical-align: top;
+      padding-bottom: 8px;
+    }
+
+      table#module-list td p {
+        margin: 0 0 7px 0;
+      }
+
+  .def {
+    display: table;
+  }
+
+    .def p {
+      display: table-cell;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .def p:first-child {
+      white-space: nowrap;
+    }
+
+    .def p:last-child {
+      width: 100%;
+    }
+
+
+  #index {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+    ul#index .class_name {
+      /* font-size: 110%; */
+      font-weight: bold;
+    }
+    #index ul {
+      margin: 0;
+    }
+
+  .item {
+    margin: 0 0 15px 0;
+  }
+
+    .item .class {
+      margin: 0 0 25px 30px;
+    }
+
+      .item .class ul.class_list {
+        margin: 0 0 20px 0;
+      }
+
+    .item .name {
+      background: #fafafa;
+      margin: 0;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      min-width: 40%;
+    }
+      .item .name:hover {
+        background: #f6f6f6;
+      }
+
+    .item .empty_desc {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    .item .inheritance {
+      margin: 3px 0 0 30px;
+    }
+
+    .item .inherited {
+      color: #666;
+    }
+
+    .item .desc {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+      .item .desc p {
+        margin: 0 0 10px 0;
+      }
+
+    .source_cont {
+      margin: 0;
+      padding: 0;
+    }
+
+    .source_link a {
+      background: #ffc300;
+      font-weight: 400;
+      font-size: .75em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 1px 1px 0 #f4b700;
+      
+      padding: 3px 8px;
+      border-radius: 2px;
+      transition: background .3s ease-in-out;
+    }
+      .source_link a:hover {
+        background: #FF7200;
+        text-shadow: none;
+        transition: background .3s ease-in-out;
+      }
+
+    .source {
+      display: none;
+      max-height: 600px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+      .source .codehilite {
+        margin: 0;
+      }
+
+  .desc h1, .desc h2, .desc h3 {
+    font-size: 100% !important;
+  }
+  .clear {
+    clear: both;
+  }
+
+  @media all and (max-width: 950px) {
+    #sidebar {
+      width: 35%;
+    }
+    #content {
+      width: 65%;
+    }
+  }
+  @media all and (max-width: 650px) {
+    #top {
+      display: none;
+    }
+    #sidebar {
+      float: none;
+      width: auto;
+    }
+    #content {
+      float: none;
+      width: auto;
+      padding: 30px;
+    }
+
+    #index ul {
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    #index ul li {
+      display: inline-block;
+      margin-right: 30px;
+    }
+    #footer {
+      text-align: left;
+    }
+    #footer p {
+      display: block;
+      margin: inherit;
+    }
+  }
+
+  /*****************************/
+
+  </style>
+
+  <style type="text/css">
+  .codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f8f8f8; }
+.codehilite .c { color: #408080; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+.codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .gr { color: #FF0000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888888 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #7D9029 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #A0A000 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+
+  <style type="text/css">
+  
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+  </style>
+
+  <script type="text/javascript">
+  function toggle(id, $link) {
+    $node = document.getElementById(id);
+    if (!$node)
+    return;
+    if (!$node.style.display || $node.style.display == 'none') {
+    $node.style.display = 'block';
+    $link.innerHTML = 'Hide source &nequiv;';
+    } else {
+    $node.style.display = 'none';
+    $link.innerHTML = 'Show source &equiv;';
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#" id="top">Top</a>
+
+<div id="container">
+    
+  
+  <div id="sidebar">
+    <h1>Index</h1>
+    <ul id="index">
+
+
+    <li class="set"><h3><a href="#header-classes">Classes</a></h3>
+      <ul>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.AbstractStatefulStockDatabaseClient">AbstractStatefulStockDatabaseClient</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.AbstractStatefulStockDatabaseClient.get_available_exchanges">get_available_exchanges</a></li>
+    <li class="mono"><a href="#arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks">get_historical_data_for_stocks</a></li>
+    <li class="mono"><a href="#arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks_in_exchange">get_historical_data_for_stocks_in_exchange</a></li>
+    <li class="mono"><a href="#arkstock.AbstractStatefulStockDatabaseClient.get_historical_stock_prices">get_historical_stock_prices</a></li>
+    <li class="mono"><a href="#arkstock.AbstractStatefulStockDatabaseClient.set_state">set_state</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.AbstractStockDatabaseClient">AbstractStockDatabaseClient</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.AbstractStockDatabaseClient.get_available_exchanges">get_available_exchanges</a></li>
+    <li class="mono"><a href="#arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks">get_historical_data_for_stocks</a></li>
+    <li class="mono"><a href="#arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks_in_exchange">get_historical_data_for_stocks_in_exchange</a></li>
+    <li class="mono"><a href="#arkstock.AbstractStockDatabaseClient.get_historical_stock_prices">get_historical_stock_prices</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.AbstractStockMetadataClient">AbstractStockMetadataClient</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.AbstractStockMetadataClient.get_stocks_in_exchange">get_stocks_in_exchange</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.ArkstockException">ArkstockException</a></span>
+        
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.HelperUtils">HelperUtils</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.HelperUtils.chunker">chunker</a></li>
+    <li class="mono"><a href="#arkstock.HelperUtils.convert_TimeInterval_to_YahooTimeInterval">convert_TimeInterval_to_YahooTimeInterval</a></li>
+    <li class="mono"><a href="#arkstock.HelperUtils.is_valid_ticker">is_valid_ticker</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.PortfolioGeneratorFactory">PortfolioGeneratorFactory</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.PortfolioGeneratorFactory.get_default">get_default</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.TimeInterval">TimeInterval</a></span>
+        
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.YahooFinanceClient">YahooFinanceClient</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.YahooFinanceClient.__init__">__init__</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceClient.filter_based_on_mcap_limit">filter_based_on_mcap_limit</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceClient.get_available_exchanges">get_available_exchanges</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceClient.get_historical_data_for_stocks">get_historical_data_for_stocks</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceClient.get_historical_data_for_stocks_in_exchange">get_historical_data_for_stocks_in_exchange</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceClient.get_historical_stock_prices">get_historical_stock_prices</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.YahooFinanceMetadataClient">YahooFinanceMetadataClient</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.YahooFinanceMetadataClient.get_stocks_in_exchange">get_stocks_in_exchange</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.YahooFinanceStatefulClient">YahooFinanceStatefulClient</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#arkstock.YahooFinanceStatefulClient.__init__">__init__</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceStatefulClient.get_available_exchanges">get_available_exchanges</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks">get_historical_data_for_stocks</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks_in_exchange">get_historical_data_for_stocks_in_exchange</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceStatefulClient.get_historical_stock_prices">get_historical_stock_prices</a></li>
+    <li class="mono"><a href="#arkstock.YahooFinanceStatefulClient.set_state">set_state</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#arkstock.YahooTimeInterval">YahooTimeInterval</a></span>
+        
+        </li>
+      </ul>
+    </li>
+
+    <li class="set"><h3><a href="#header-submodules">Sub-modules</a></h3>
+      <ul>
+        <li class="mono"><a href="diversify.m.html">arkstock.diversify</a></li>
+        <li class="mono"><a href="helper.m.html">arkstock.helper</a></li>
+        <li class="mono"><a href="optimize.m.html">arkstock.optimize</a></li>
+        <li class="mono"><a href="yahoo_finance_gateway.m.html">arkstock.yahoo_finance_gateway</a></li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+
+    <article id="content">
+      
+  
+
+  
+
+
+  <header id="section-intro">
+  <h1 class="title"><span class="name">arkstock</span> module</h1>
+  
+  
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock" class="source">
+    <div class="codehilite"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">dont_write_bytecode</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">.diversify</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">.optimize</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">.pipelines</span> <span class="kn">import</span> <span class="n">PortfolioGeneratorFactory</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    
+    <span class="c1"># Actual classes</span>
+    <span class="s1">&#39;TimeInterval&#39;</span><span class="p">,</span> <span class="s1">&#39;AbstractStockDatabaseClient&#39;</span><span class="p">,</span> <span class="s1">&#39;AbstractStockMetadataClient&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;AbstractStatefulStockDatabaseClient&#39;</span><span class="p">,</span> <span class="s1">&#39;yahoo_finance_gateway&#39;</span><span class="p">,</span> <span class="s1">&#39;YahooTimeInterval&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;YahooFinanceMetadataClient&#39;</span><span class="p">,</span> <span class="s1">&#39;HelperUtils&#39;</span><span class="p">,</span> <span class="s1">&#39;YahooFinanceClient&#39;</span><span class="p">,</span> <span class="s1">&#39;YahooFinanceStatefulClient&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;helper&#39;</span><span class="p">,</span> <span class="s1">&#39;diversify&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;optimize&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;PortfolioGeneratorFactory&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;ArkstockException&#39;</span><span class="p">,</span>
+
+    <span class="c1"># Test classes</span>
+    <span class="c1"># &#39;_YahooFinanceGatewayTest&#39;, &#39;_YahooFinanceMetadataClientTest&#39;, &#39;_YahooFinanceClientTest&#39;,</span>
+    <span class="c1"># &#39;_HelperUtilsTest&#39;,</span>
+
+    <span class="c1"># &#39;_DiversificationHelperTest&#39;, &#39;_DiversifyTest&#39;,</span>
+
+    <span class="c1"># &#39;_OptimizeTest&#39;</span>
+<span class="p">]</span>
+
+<span class="n">testclasses</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Test classes</span>
+    <span class="s1">&#39;_YahooFinanceGatewayTest&#39;</span><span class="p">,</span> <span class="s1">&#39;_YahooFinanceMetadataClientTest&#39;</span><span class="p">,</span> <span class="s1">&#39;_YahooFinanceClientTest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;_HelperUtilsTest&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;_DiversificationHelperTest&#39;</span><span class="p">,</span> <span class="s1">&#39;_DiversifyTest&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;_OptimizeTest&#39;</span>
+<span class="p">]</span>
+</pre></div>
+
+  </div>
+
+  </header>
+
+  <section id="section-items">
+
+
+    <h2 class="section-title" id="header-classes">Classes</h2>
+      
+      <div class="item">
+      <p id="arkstock.AbstractStatefulStockDatabaseClient" class="name">class <span class="ident">AbstractStatefulStockDatabaseClient</span></p>
+      
+  
+    <div class="desc"><p>Basically a stateful proxy of AbstractStockDatabaseClient</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStatefulStockDatabaseClient', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStatefulStockDatabaseClient" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">AbstractStatefulStockDatabaseClient</span><span class="p">(</span><span class="n">AbstractStockDatabaseClient</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Basically a stateful proxy of AbstractStockDatabaseClient</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method sets the class wide execution state for stateful database clients</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">        * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">        * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.AbstractStatefulStockDatabaseClient">AbstractStatefulStockDatabaseClient</a></li>
+          <li><a href="#arkstock.AbstractStockDatabaseClient">AbstractStockDatabaseClient</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStatefulStockDatabaseClient.get_available_exchanges">
+    <p>def <span class="ident">get_available_exchanges</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns a list of stock exchanges for which this client can return data</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStatefulStockDatabaseClient.get_available_exchanges', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStatefulStockDatabaseClient.get_available_exchanges" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_available_exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method returns a list of stock exchanges for which this client can return data</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks">
+    <p>def <span class="ident">get_historical_data_for_stocks</span>(</p><p>self, symbols, start_date, end_date, time_interval)</p>
+    </div>
+    
+    <p class="inheritance">
+     <strong>Inheritance:</strong>
+       <code><a href="#arkstock.AbstractStockDatabaseClient">AbstractStockDatabaseClient</a></code>.<code><a href="#arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks">get_historical_data_for_stocks</a></code>
+    </p>
+
+    
+  
+    <div class="desc inherited"><p>This method returns historical data for all the provided ticker symbols in USD</p>
+<p>Args:</p>
+<ul>
+<li><code>symbols</code> - the ticker symbols for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>This method will skip all ticker symbols that are invalid for some reason or another</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_historical_data_for_stocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method returns historical data for all the provided ticker symbols in USD</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `symbols` - the ticker symbols for which you wish to retrieve data</span>
+<span class="sd">    * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">    * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">    * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A dict mapping a ticker symbol to a list of historical stock price data in USD.</span>
+<span class="sd">    The most recent price should be at index 0.</span>
+<span class="sd">    Note:</span>
+<span class="sd">    &gt; This method will skip all ticker symbols that are invalid for some reason or another</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks_in_exchange">
+    <p>def <span class="ident">get_historical_data_for_stocks_in_exchange</span>(</p><p>self, exchange_name, start_date, end_date, time_interval, threshold_mcap=True, mcap_limit_in_millions=300)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns historical data for all ticker symbols in an exchange in USD that meet a 
+given mcap_limit</p>
+<p>Args:</p>
+<ul>
+<li><code>exchange_name</code> - string repr of the exchange for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+<li><code>threshold_mcap</code> - whether or not the stocks in the exchange should be filtered based on market
+    capitalization</li>
+<li><code>mcap_limit_in_millions</code> - the market cap threshold</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>The returned data is for the ticker symbols found in the provided exchange.</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks_in_exchange', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStatefulStockDatabaseClient.get_historical_data_for_stocks_in_exchange" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">,</span>
+    <span class="n">threshold_mcap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method returns historical data for all ticker symbols in an exchange in USD that meet a </span>
+<span class="sd">    given mcap_limit</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `exchange_name` - string repr of the exchange for which you wish to retrieve data</span>
+<span class="sd">    * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">    * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">    * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">    * `threshold_mcap` - whether or not the stocks in the exchange should be filtered based on market</span>
+<span class="sd">        capitalization</span>
+<span class="sd">    * `mcap_limit_in_millions` - the market cap threshold</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A dict mapping a ticker symbol to a list of historical stock price data in USD.</span>
+<span class="sd">    The most recent price should be at index 0.</span>
+<span class="sd">    Note:</span>
+<span class="sd">    &gt; The returned data is for the ticker symbols found in the provided exchange.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStatefulStockDatabaseClient.get_historical_stock_prices">
+    <p>def <span class="ident">get_historical_stock_prices</span>(</p><p>self, symbol, start_date, end_date, time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method retrieves historical price data for a ticker symbol in USD.</p>
+<p>Args:</p>
+<ul>
+<li><code>symbol</code> - the ticker symbol for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A list of the historical stock price data in USD. The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>In theory, the default currency does not need to be USD, it only needs to be consistent
+within the application. In practice, USD is by far the most commonly used and hence is preferred</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStatefulStockDatabaseClient.get_historical_stock_prices', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStatefulStockDatabaseClient.get_historical_stock_prices" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_historical_stock_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method retrieves historical price data for a ticker symbol in USD.</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `symbol` - the ticker symbol for which you wish to retrieve data</span>
+<span class="sd">    * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">    * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">    * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A list of the historical stock price data in USD. The most recent price should be at index 0.</span>
+<span class="sd">    Note:</span>
+<span class="sd">    &gt; In theory, the default currency does not need to be USD, it only needs to be consistent</span>
+<span class="sd">    within the application. In practice, USD is by far the most commonly used and hence is preferred</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStatefulStockDatabaseClient.set_state">
+    <p>def <span class="ident">set_state</span>(</p><p>self, start_date, end_date, time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method sets the class wide execution state for stateful database clients</p>
+<p>Args:</p>
+<ul>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>None</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStatefulStockDatabaseClient.set_state', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStatefulStockDatabaseClient.set_state" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method sets the class wide execution state for stateful database clients</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">    * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">    * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; None</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.AbstractStockDatabaseClient" class="name">class <span class="ident">AbstractStockDatabaseClient</span></p>
+      
+  
+    <div class="desc"><p>An abstract stock database client that defines the methods that need to be implemented for
+interoperability with the rest of the code</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStockDatabaseClient', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStockDatabaseClient" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">AbstractStockDatabaseClient</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    An abstract stock database client that defines the methods that need to be implemented for</span>
+<span class="sd">    interoperability with the rest of the code</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_historical_stock_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method retrieves historical price data for a ticker symbol in USD.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `symbol` - the ticker symbol for which you wish to retrieve data</span>
+<span class="sd">        * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">        * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">        * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A list of the historical stock price data in USD. The most recent price should be at index 0.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        &gt; In theory, the default currency does not need to be USD, it only needs to be consistent</span>
+<span class="sd">        within the application. In practice, USD is by far the most commonly used and hence is preferred</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_historical_data_for_stocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method returns historical data for all the provided ticker symbols in USD</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `symbols` - the ticker symbols for which you wish to retrieve data</span>
+<span class="sd">        * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">        * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">        * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A dict mapping a ticker symbol to a list of historical stock price data in USD.</span>
+<span class="sd">        The most recent price should be at index 0.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        &gt; This method will skip all ticker symbols that are invalid for some reason or another</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">,</span>
+        <span class="n">threshold_mcap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method returns historical data for all ticker symbols in an exchange in USD that meet a </span>
+<span class="sd">        given mcap_limit</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `exchange_name` - string repr of the exchange for which you wish to retrieve data</span>
+<span class="sd">        * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">        * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">        * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">        * `threshold_mcap` - whether or not the stocks in the exchange should be filtered based on market</span>
+<span class="sd">            capitalization</span>
+<span class="sd">        * `mcap_limit_in_millions` - the market cap threshold</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A dict mapping a ticker symbol to a list of historical stock price data in USD.</span>
+<span class="sd">        The most recent price should be at index 0.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        &gt; The returned data is for the ticker symbols found in the provided exchange.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method returns a list of stock exchanges for which this client can return data</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.AbstractStockDatabaseClient">AbstractStockDatabaseClient</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStockDatabaseClient.get_available_exchanges">
+    <p>def <span class="ident">get_available_exchanges</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns a list of stock exchanges for which this client can return data</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStockDatabaseClient.get_available_exchanges', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStockDatabaseClient.get_available_exchanges" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_available_exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method returns a list of stock exchanges for which this client can return data</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks">
+    <p>def <span class="ident">get_historical_data_for_stocks</span>(</p><p>self, symbols, start_date, end_date, time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns historical data for all the provided ticker symbols in USD</p>
+<p>Args:</p>
+<ul>
+<li><code>symbols</code> - the ticker symbols for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>This method will skip all ticker symbols that are invalid for some reason or another</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_historical_data_for_stocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method returns historical data for all the provided ticker symbols in USD</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `symbols` - the ticker symbols for which you wish to retrieve data</span>
+<span class="sd">    * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">    * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">    * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A dict mapping a ticker symbol to a list of historical stock price data in USD.</span>
+<span class="sd">    The most recent price should be at index 0.</span>
+<span class="sd">    Note:</span>
+<span class="sd">    &gt; This method will skip all ticker symbols that are invalid for some reason or another</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks_in_exchange">
+    <p>def <span class="ident">get_historical_data_for_stocks_in_exchange</span>(</p><p>self, exchange_name, start_date, end_date, time_interval, threshold_mcap=True, mcap_limit_in_millions=300)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns historical data for all ticker symbols in an exchange in USD that meet a 
+given mcap_limit</p>
+<p>Args:</p>
+<ul>
+<li><code>exchange_name</code> - string repr of the exchange for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+<li><code>threshold_mcap</code> - whether or not the stocks in the exchange should be filtered based on market
+    capitalization</li>
+<li><code>mcap_limit_in_millions</code> - the market cap threshold</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>The returned data is for the ticker symbols found in the provided exchange.</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks_in_exchange', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStockDatabaseClient.get_historical_data_for_stocks_in_exchange" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">,</span>
+    <span class="n">threshold_mcap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method returns historical data for all ticker symbols in an exchange in USD that meet a </span>
+<span class="sd">    given mcap_limit</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `exchange_name` - string repr of the exchange for which you wish to retrieve data</span>
+<span class="sd">    * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">    * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">    * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">    * `threshold_mcap` - whether or not the stocks in the exchange should be filtered based on market</span>
+<span class="sd">        capitalization</span>
+<span class="sd">    * `mcap_limit_in_millions` - the market cap threshold</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A dict mapping a ticker symbol to a list of historical stock price data in USD.</span>
+<span class="sd">    The most recent price should be at index 0.</span>
+<span class="sd">    Note:</span>
+<span class="sd">    &gt; The returned data is for the ticker symbols found in the provided exchange.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStockDatabaseClient.get_historical_stock_prices">
+    <p>def <span class="ident">get_historical_stock_prices</span>(</p><p>self, symbol, start_date, end_date, time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method retrieves historical price data for a ticker symbol in USD.</p>
+<p>Args:</p>
+<ul>
+<li><code>symbol</code> - the ticker symbol for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A list of the historical stock price data in USD. The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>In theory, the default currency does not need to be USD, it only needs to be consistent
+within the application. In practice, USD is by far the most commonly used and hence is preferred</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStockDatabaseClient.get_historical_stock_prices', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStockDatabaseClient.get_historical_stock_prices" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_historical_stock_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method retrieves historical price data for a ticker symbol in USD.</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `symbol` - the ticker symbol for which you wish to retrieve data</span>
+<span class="sd">    * `start_date` - the start of the time range for which you would like to get data</span>
+<span class="sd">    * `end_date` - the end of the time range for which you would like to get data</span>
+<span class="sd">    * `time_interval` - the time interval at which you would like to get data for the given time range</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A list of the historical stock price data in USD. The most recent price should be at index 0.</span>
+<span class="sd">    Note:</span>
+<span class="sd">    &gt; In theory, the default currency does not need to be USD, it only needs to be consistent</span>
+<span class="sd">    within the application. In practice, USD is by far the most commonly used and hence is preferred</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.AbstractStockMetadataClient" class="name">class <span class="ident">AbstractStockMetadataClient</span></p>
+      
+  
+    <div class="desc"><p>An abstract stock metadata client that defines the methods that need to be implemented for
+interoperability with the rest of the code</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStockMetadataClient', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStockMetadataClient" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">AbstractStockMetadataClient</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    An abstract stock metadata client that defines the methods that need to be implemented for</span>
+<span class="sd">    interoperability with the rest of the code</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method returns a list of ticker symbols that correspond to a provided `exchange_name`</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `exchange_name` - string repr of the exchange for which you wish to retrieve data</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A list of ticker symbols found in that exchange</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.AbstractStockMetadataClient">AbstractStockMetadataClient</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.AbstractStockMetadataClient.get_stocks_in_exchange">
+    <p>def <span class="ident">get_stocks_in_exchange</span>(</p><p>self, exchange_name)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns a list of ticker symbols that correspond to a provided <code>exchange_name</code></p>
+<p>Args:</p>
+<ul>
+<li><code>exchange_name</code> - string repr of the exchange for which you wish to retrieve data</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A list of ticker symbols found in that exchange</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.AbstractStockMetadataClient.get_stocks_in_exchange', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.AbstractStockMetadataClient.get_stocks_in_exchange" class="source">
+    <div class="codehilite"><pre><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method returns a list of ticker symbols that correspond to a provided `exchange_name`</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `exchange_name` - string repr of the exchange for which you wish to retrieve data</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A list of ticker symbols found in that exchange</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.ArkstockException" class="name">class <span class="ident">ArkstockException</span></p>
+      
+  
+    <div class="desc"><p>Base exception class from which all other package exceptions inherit. This allows the end user to simply
+catch ArkstockException and handle exceptions from the arkstock package in a consistent way.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.ArkstockException', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.ArkstockException" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">ArkstockException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Base exception class from which all other package exceptions inherit. This allows the end user to simply</span>
+<span class="sd">    catch ArkstockException and handle exceptions from the arkstock package in a consistent way.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.ArkstockException">ArkstockException</a></li>
+          <li>builtins.Exception</li>
+          <li>builtins.BaseException</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Class variables</h3>
+            <div class="item">
+            <p id="arkstock.ArkstockException.args" class="name">var <span class="ident">args</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.HelperUtils" class="name">class <span class="ident">HelperUtils</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.HelperUtils', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.HelperUtils" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">HelperUtils</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">chunker</span><span class="p">(</span><span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">chunksize</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fillvalue</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Collect data into fixed-length chunks or blocks</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        </span>
+<span class="sd">        * `iterable` - a data type is iterable</span>
+<span class="sd">        * `chunksize` - the size of the blocks you wish to extract from the iterable</span>
+<span class="sd">        * `fillvalue` - the default value to fill for the last block if there arent enough elements</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A generator/iterable wherein each element is a block of size `chunksize`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+    
+        <span class="c1"># chunker(&#39;ABCDEFG&#39;, 3, &#39;x&#39;) --&gt; [(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;), (&#39;D&#39;, &#39;E&#39;, &#39;F&#39;), (&#39;G&#39;, &#39;x&#39;, &#39;x&#39;)]</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)]</span> <span class="o">*</span> <span class="n">chunksize</span>
+        <span class="k">return</span> <span class="n">zip_longest</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="n">fillvalue</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_valid_ticker</span><span class="p">(</span><span class="n">ticker</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Check to ensure that a given ticker doesn&#39;t contain any weird symbols</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `ticker` - the string repr of the ticker symbol to check</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        &gt; True if the ticker is valid, false otherwise</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="s1">&#39;@&#39;</span> <span class="ow">in</span> <span class="n">ticker</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="s1">&#39;&amp;&#39;</span> <span class="ow">in</span> <span class="n">ticker</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">convert_TimeInterval_to_YahooTimeInterval</span><span class="p">(</span><span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">YahooTimeInterval</span><span class="p">:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        A utility method to convert from the generic TimeInterval to the specific YahooTimeInterval</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">TimeInterval</span><span class="o">.</span><span class="n">weeks</span> <span class="p">:</span> <span class="n">YahooTimeInterval</span><span class="o">.</span><span class="n">weeks</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">time_interval</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.HelperUtils">HelperUtils</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.HelperUtils.chunker">
+    <p>def <span class="ident">chunker</span>(</p><p>iterable, chunksize, fillvalue=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Collect data into fixed-length chunks or blocks</p>
+<p>Args:</p>
+<ul>
+<li><code>iterable</code> - a data type is iterable</li>
+<li><code>chunksize</code> - the size of the blocks you wish to extract from the iterable</li>
+<li><code>fillvalue</code> - the default value to fill for the last block if there arent enough elements</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A generator/iterable wherein each element is a block of size <code>chunksize</code></p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.HelperUtils.chunker', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.HelperUtils.chunker" class="source">
+    <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">chunker</span><span class="p">(</span><span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">chunksize</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fillvalue</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Collect data into fixed-length chunks or blocks</span>
+<span class="sd">    Args:</span>
+<span class="sd">    </span>
+<span class="sd">    * `iterable` - a data type is iterable</span>
+<span class="sd">    * `chunksize` - the size of the blocks you wish to extract from the iterable</span>
+<span class="sd">    * `fillvalue` - the default value to fill for the last block if there arent enough elements</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A generator/iterable wherein each element is a block of size `chunksize`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># chunker(&#39;ABCDEFG&#39;, 3, &#39;x&#39;) --&gt; [(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;), (&#39;D&#39;, &#39;E&#39;, &#39;F&#39;), (&#39;G&#39;, &#39;x&#39;, &#39;x&#39;)]</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)]</span> <span class="o">*</span> <span class="n">chunksize</span>
+    <span class="k">return</span> <span class="n">zip_longest</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="n">fillvalue</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.HelperUtils.convert_TimeInterval_to_YahooTimeInterval">
+    <p>def <span class="ident">convert_TimeInterval_to_YahooTimeInterval</span>(</p><p>time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>A utility method to convert from the generic TimeInterval to the specific YahooTimeInterval</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.HelperUtils.convert_TimeInterval_to_YahooTimeInterval', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.HelperUtils.convert_TimeInterval_to_YahooTimeInterval" class="source">
+    <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">convert_TimeInterval_to_YahooTimeInterval</span><span class="p">(</span><span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">YahooTimeInterval</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A utility method to convert from the generic TimeInterval to the specific YahooTimeInterval</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">TimeInterval</span><span class="o">.</span><span class="n">weeks</span> <span class="p">:</span> <span class="n">YahooTimeInterval</span><span class="o">.</span><span class="n">weeks</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">time_interval</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.HelperUtils.is_valid_ticker">
+    <p>def <span class="ident">is_valid_ticker</span>(</p><p>ticker)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Check to ensure that a given ticker doesn't contain any weird symbols</p>
+<p>Args:</p>
+<ul>
+<li><code>ticker</code> - the string repr of the ticker symbol to check</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>True if the ticker is valid, false otherwise</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.HelperUtils.is_valid_ticker', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.HelperUtils.is_valid_ticker" class="source">
+    <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">is_valid_ticker</span><span class="p">(</span><span class="n">ticker</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Check to ensure that a given ticker doesn&#39;t contain any weird symbols</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `ticker` - the string repr of the ticker symbol to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; True if the ticker is valid, false otherwise</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="s1">&#39;@&#39;</span> <span class="ow">in</span> <span class="n">ticker</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="s1">&#39;&amp;&#39;</span> <span class="ow">in</span> <span class="n">ticker</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.PortfolioGeneratorFactory" class="name">class <span class="ident">PortfolioGeneratorFactory</span></p>
+      
+  
+    <div class="desc"><p>This class encapsulates the logic to create a data-pipeline that returns a diversified and optimized
+portfolio.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.PortfolioGeneratorFactory', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.PortfolioGeneratorFactory" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">PortfolioGeneratorFactory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class encapsulates the logic to create a data-pipeline that returns a diversified and optimized</span>
+<span class="sd">    portfolio.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="n">exchange_filter</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">True</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This returns the default pipeline that can be used to diversify and optimize portfolios</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `exchange_filter` - a function that returns True or False depending on whether a stock exchange</span>
+<span class="sd">            should be used to diversify/optimize a portfolio.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A function that allows one to pass in a list of preferred stocks and output a diversified portfolio</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        &gt; Simple ad-hoc testing shows that the first call to the output pipeline takes 60 seconds, whereas</span>
+<span class="sd">        subsequent calls only take 0.5 seconds.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">db_client</span> <span class="o">=</span> <span class="n">YahooFinanceStatefulClient</span><span class="p">()</span>
+        <span class="n">db_client</span> <span class="o">=</span> <span class="n">default_cached_db_client</span><span class="p">(</span><span class="n">db_client</span><span class="p">)</span>
+
+        <span class="n">stock_exchange_data_source</span> <span class="o">=</span> <span class="n">default_stateful_stock_exchange_data_source</span><span class="p">(</span><span class="n">db_client</span><span class="p">,</span> <span class="n">exchange_filter</span><span class="p">)</span>
+
+        <span class="n">transformed_stock_exch_data</span> <span class="o">=</span> <span class="n">default_data_transformator</span><span class="p">(</span><span class="n">stock_exchange_data_source</span><span class="p">)</span>
+
+        <span class="n">diversifier</span> <span class="o">=</span> <span class="n">default_diversifier</span><span class="p">(</span><span class="n">transformed_stock_exch_data</span><span class="p">)</span>
+
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">default_optimizer</span><span class="p">(</span><span class="n">diversifier</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">optimizer</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.PortfolioGeneratorFactory">PortfolioGeneratorFactory</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.PortfolioGeneratorFactory.get_default">
+    <p>def <span class="ident">get_default</span>(</p><p>exchange_filter=&lt;function PortfolioGeneratorFactory.&lt;lambda&gt; at 0x000001B6E68860D0&gt;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This returns the default pipeline that can be used to diversify and optimize portfolios</p>
+<p>Args:</p>
+<ul>
+<li><code>exchange_filter</code> - a function that returns True or False depending on whether a stock exchange
+    should be used to diversify/optimize a portfolio.</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A function that allows one to pass in a list of preferred stocks and output a diversified portfolio</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>Simple ad-hoc testing shows that the first call to the output pipeline takes 60 seconds, whereas
+subsequent calls only take 0.5 seconds.</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.PortfolioGeneratorFactory.get_default', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.PortfolioGeneratorFactory.get_default" class="source">
+    <div class="codehilite"><pre><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="n">exchange_filter</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This returns the default pipeline that can be used to diversify and optimize portfolios</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `exchange_filter` - a function that returns True or False depending on whether a stock exchange</span>
+<span class="sd">        should be used to diversify/optimize a portfolio.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A function that allows one to pass in a list of preferred stocks and output a diversified portfolio</span>
+<span class="sd">    Note:</span>
+<span class="sd">    &gt; Simple ad-hoc testing shows that the first call to the output pipeline takes 60 seconds, whereas</span>
+<span class="sd">    subsequent calls only take 0.5 seconds.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">db_client</span> <span class="o">=</span> <span class="n">YahooFinanceStatefulClient</span><span class="p">()</span>
+    <span class="n">db_client</span> <span class="o">=</span> <span class="n">default_cached_db_client</span><span class="p">(</span><span class="n">db_client</span><span class="p">)</span>
+    <span class="n">stock_exchange_data_source</span> <span class="o">=</span> <span class="n">default_stateful_stock_exchange_data_source</span><span class="p">(</span><span class="n">db_client</span><span class="p">,</span> <span class="n">exchange_filter</span><span class="p">)</span>
+    <span class="n">transformed_stock_exch_data</span> <span class="o">=</span> <span class="n">default_data_transformator</span><span class="p">(</span><span class="n">stock_exchange_data_source</span><span class="p">)</span>
+    <span class="n">diversifier</span> <span class="o">=</span> <span class="n">default_diversifier</span><span class="p">(</span><span class="n">transformed_stock_exch_data</span><span class="p">)</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">default_optimizer</span><span class="p">(</span><span class="n">diversifier</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">optimizer</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.TimeInterval" class="name">class <span class="ident">TimeInterval</span></p>
+      
+  
+    <div class="desc"><p>An enum to encapsulate package specific time intervals</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.TimeInterval', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.TimeInterval" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">TimeInterval</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    An enum to encapsulate package specific time intervals</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">weeks</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;weeks&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="sd">&#39;&#39;&#39;TimeInterval enum value to denote a time interval of 1 week i.e. 7 days&#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span> <span class="c1"># string specific to yahoo finance that represents that time range</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">days</span> <span class="o">=</span> <span class="n">days</span> <span class="c1"># interval length in days</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.TimeInterval">TimeInterval</a></li>
+          <li>enum.Enum</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Class variables</h3>
+            <div class="item">
+            <p id="arkstock.TimeInterval.name" class="name">var <span class="ident">name</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="arkstock.TimeInterval.value" class="name">var <span class="ident">value</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="arkstock.TimeInterval.weeks" class="name">var <span class="ident">weeks</span></p>
+            
+
+            
+  
+    <div class="desc"><p>TimeInterval enum value to denote a time interval of 1 week i.e. 7 days</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.YahooFinanceClient" class="name">class <span class="ident">YahooFinanceClient</span></p>
+      
+  
+    <div class="desc"><p>An concrete stock database client that implementes the methods that need to be implemented for
+interoperability with the rest of the code. This client is based on the yahoo finance API.</p>
+<p>This client is essentially stateless and is hence threadsafe.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceClient', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceClient" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">YahooFinanceClient</span><span class="p">(</span><span class="n">AbstractStockDatabaseClient</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    An concrete stock database client that implementes the methods that need to be implemented for</span>
+<span class="sd">    interoperability with the rest of the code. This client is based on the yahoo finance API.</span>
+
+<span class="sd">    This client is essentially stateless and is hence threadsafe.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="n">yfgateway</span> <span class="o">=</span><span class="n">yahoo_finance_gateway</span><span class="p">,</span>
+        <span class="n">yfmetadata</span><span class="p">:</span> <span class="n">AbstractStockMetadataClient</span> <span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">global_exchange_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;ASE&#39;</span><span class="p">,</span> <span class="s1">&#39;NCM&#39;</span><span class="p">,</span> <span class="s1">&#39;NGM&#39;</span><span class="p">,</span> <span class="s1">&#39;NMS&#39;</span><span class="p">,</span> <span class="s1">&#39;NYQ&#39;</span><span class="p">,</span> <span class="s1">&#39;OBB&#39;</span><span class="p">,</span> <span class="s1">&#39;TOR&#39;</span><span class="p">,</span> <span class="s1">&#39;VAN&#39;</span><span class="p">]):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span> <span class="o">=</span> <span class="n">yfgateway</span>
+        <span class="sd">&#39;&#39;&#39;A pointer to the YahooFinanceGateway module&#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="n">yfmetadata</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">yfmetadata</span> <span class="o">=</span> <span class="n">YahooFinanceMetadataClient</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">yfmetadata</span> <span class="o">=</span> <span class="n">yfmetadata</span>
+        <span class="sd">&#39;&#39;&#39;A yahoo finance metadata client&#39;&#39;&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">global_exchange_list</span> <span class="o">=</span> <span class="n">global_exchange_list</span>
+        <span class="sd">&#39;&#39;&#39;Stock exchanges for which data is available&#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">filter_based_on_mcap_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Given a list of stocks, only return stocks that have a market capitalization over the provided</span>
+<span class="sd">        threshold</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `symbols` - the ticker symbols for which you wish to retrieve data</span>
+<span class="sd">        * `mcap_limit_in_millions` - the mcap threshold</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A list of symbols above the threshold</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="n">mcap_limit_in_millions</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">symbols</span>
+
+        <span class="n">valid_symbols</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">chunked_stocks</span> <span class="o">=</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">chunker</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunked_stocks</span><span class="p">:</span>
+            <span class="n">_stocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chunk</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">]</span>
+
+            <span class="n">_mcap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_mcap</span><span class="p">(</span><span class="n">_stocks</span><span class="p">)</span>
+
+            <span class="n">_stocks_above_threshold</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">symbol</span>
+                <span class="k">for</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">mcap</span> <span class="ow">in</span> <span class="n">_mcap</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">is_mcap_over_limit</span><span class="p">(</span><span class="n">mcap</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="n">valid_symbols</span> <span class="o">+=</span> <span class="n">_stocks_above_threshold</span>
+
+        <span class="k">return</span> <span class="n">valid_symbols</span>
+
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_cached_get_exchange_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">YahooTimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This is a cached wrapper around `yfgateway.get_historical_exch_rate_to_USD`</span>
+
+<span class="sd">        &gt; See `yfgateway.get_historical_exch_rate_to_USD`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_historical_exch_rate_to_USD</span><span class="p">(</span><span class="n">curr</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_historical_stock_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">is_valid_ticker</span><span class="p">(</span><span class="n">symbol</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">IllegalArgument</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> is not a valid ticker symbol&#39;</span> <span class="o">%</span> <span class="n">symbol</span><span class="p">)</span>
+
+        <span class="n">yahoo_time_interval</span> <span class="o">=</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">convert_TimeInterval_to_YahooTimeInterval</span><span class="p">(</span><span class="n">time_interval</span><span class="p">)</span>
+
+        <span class="n">stock_native_curr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_native_currency_for_ticker</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+        <span class="n">exch_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_get_exchange_rate</span><span class="p">(</span><span class="n">stock_native_curr</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span>
+
+        <span class="n">historical_prices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">rate</span> <span class="o">*</span> <span class="n">price</span>
+            <span class="k">for</span> <span class="n">rate</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">exch_rate</span><span class="p">,</span> <span class="n">historical_prices</span><span class="p">)</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_historical_data_for_stocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+
+        <span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">symbols</span> <span class="k">if</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">is_valid_ticker</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+
+        <span class="n">historical_prices</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">]</span>
+        
+        <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">future_to_stock</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">,</span> <span class="o">*</span><span class="n">arg</span><span class="p">):</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span>
+            <span class="p">}</span>
+
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">future_to_stock</span><span class="p">):</span>
+
+                <span class="n">symbol</span> <span class="o">=</span> <span class="n">future_to_stock</span><span class="p">[</span><span class="n">future</span><span class="p">]</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">price_in_usd</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">historical_prices</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span> <span class="o">=</span> <span class="n">price_in_usd</span>
+
+        <span class="k">return</span> <span class="n">historical_prices</span>
+
+    <span class="k">def</span> <span class="nf">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">,</span>
+        <span class="n">threshold_mcap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+
+        <span class="n">stocks_in_exch</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfmetadata</span><span class="o">.</span><span class="n">get_stocks_in_exchange</span><span class="p">(</span><span class="n">exchange_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">is_valid_ticker</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">threshold_mcap</span><span class="p">:</span>
+            <span class="n">stocks_in_exch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_based_on_mcap_limit</span><span class="p">(</span><span class="n">stocks_in_exch</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">)</span>
+
+        <span class="n">yahoo_time_interval</span> <span class="o">=</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">convert_TimeInterval_to_YahooTimeInterval</span><span class="p">(</span><span class="n">time_interval</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stocks_in_exch</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+
+        <span class="n">stock_exch_native_currency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_native_currency_for_ticker</span><span class="p">(</span><span class="n">stocks_in_exch</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">exchange_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_get_exchange_rate</span><span class="p">(</span><span class="n">stock_exch_native_currency</span><span class="p">,</span>
+            <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span>
+
+        <span class="n">historical_prices</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">stocks_in_exch</span><span class="p">]</span>
+
+        <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">future_to_stock</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">,</span> <span class="o">*</span><span class="n">arg</span><span class="p">):</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span>
+            <span class="p">}</span>
+
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">future_to_stock</span><span class="p">):</span>
+
+                <span class="n">symbol</span> <span class="o">=</span> <span class="n">future_to_stock</span><span class="p">[</span><span class="n">future</span><span class="p">]</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">price_in_native_currency</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">historical_prices</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">rate</span> <span class="o">*</span> <span class="n">price</span>
+                        <span class="k">for</span> <span class="n">rate</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">exchange_rate</span><span class="p">,</span> <span class="n">price_in_native_currency</span><span class="p">)</span>
+                    <span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">historical_prices</span>
+
+    <span class="k">def</span> <span class="nf">get_available_exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_exchange_list</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.YahooFinanceClient">YahooFinanceClient</a></li>
+          <li><a href="#arkstock.AbstractStockDatabaseClient">AbstractStockDatabaseClient</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceClient.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, yfgateway=&lt;module &#39;__pdoc_file_module__.data.yahoo_finance_gateway&#39; from &#39;C:\\Users\\abhinav\\Documents\\BitBucket\\stockanalysis\\arkstock\\data\\yahoo_finance_gateway.py&#39;&gt;, yfmetadata=None, global_exchange_list=[&#39;ASE&#39;, &#39;NCM&#39;, &#39;NGM&#39;, &#39;NMS&#39;, &#39;NYQ&#39;, &#39;OBB&#39;, &#39;TOR&#39;, &#39;VAN&#39;])</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Initialize self.  See help(type(self)) for accurate signature.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceClient.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceClient.__init__" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="n">yfgateway</span> <span class="o">=</span><span class="n">yahoo_finance_gateway</span><span class="p">,</span>
+    <span class="n">yfmetadata</span><span class="p">:</span> <span class="n">AbstractStockMetadataClient</span> <span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="n">global_exchange_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;ASE&#39;</span><span class="p">,</span> <span class="s1">&#39;NCM&#39;</span><span class="p">,</span> <span class="s1">&#39;NGM&#39;</span><span class="p">,</span> <span class="s1">&#39;NMS&#39;</span><span class="p">,</span> <span class="s1">&#39;NYQ&#39;</span><span class="p">,</span> <span class="s1">&#39;OBB&#39;</span><span class="p">,</span> <span class="s1">&#39;TOR&#39;</span><span class="p">,</span> <span class="s1">&#39;VAN&#39;</span><span class="p">]):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span> <span class="o">=</span> <span class="n">yfgateway</span>
+    <span class="sd">&#39;&#39;&#39;A pointer to the YahooFinanceGateway module&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">yfmetadata</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">yfmetadata</span> <span class="o">=</span> <span class="n">YahooFinanceMetadataClient</span><span class="p">()</span>
+    
+    <span class="bp">self</span><span class="o">.</span><span class="n">yfmetadata</span> <span class="o">=</span> <span class="n">yfmetadata</span>
+    <span class="sd">&#39;&#39;&#39;A yahoo finance metadata client&#39;&#39;&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">global_exchange_list</span> <span class="o">=</span> <span class="n">global_exchange_list</span>
+    <span class="sd">&#39;&#39;&#39;Stock exchanges for which data is available&#39;&#39;&#39;</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceClient.filter_based_on_mcap_limit">
+    <p>def <span class="ident">filter_based_on_mcap_limit</span>(</p><p>self, symbols, mcap_limit_in_millions)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Given a list of stocks, only return stocks that have a market capitalization over the provided
+threshold</p>
+<p>Args:</p>
+<ul>
+<li><code>symbols</code> - the ticker symbols for which you wish to retrieve data</li>
+<li><code>mcap_limit_in_millions</code> - the mcap threshold</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A list of symbols above the threshold</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceClient.filter_based_on_mcap_limit', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceClient.filter_based_on_mcap_limit" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">filter_based_on_mcap_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Given a list of stocks, only return stocks that have a market capitalization over the provided</span>
+<span class="sd">    threshold</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `symbols` - the ticker symbols for which you wish to retrieve data</span>
+<span class="sd">    * `mcap_limit_in_millions` - the mcap threshold</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A list of symbols above the threshold</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">mcap_limit_in_millions</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">symbols</span>
+    <span class="n">valid_symbols</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">chunked_stocks</span> <span class="o">=</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">chunker</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunked_stocks</span><span class="p">:</span>
+        <span class="n">_stocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chunk</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">]</span>
+        <span class="n">_mcap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_mcap</span><span class="p">(</span><span class="n">_stocks</span><span class="p">)</span>
+        <span class="n">_stocks_above_threshold</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">symbol</span>
+            <span class="k">for</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">mcap</span> <span class="ow">in</span> <span class="n">_mcap</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">is_mcap_over_limit</span><span class="p">(</span><span class="n">mcap</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">valid_symbols</span> <span class="o">+=</span> <span class="n">_stocks_above_threshold</span>
+    <span class="k">return</span> <span class="n">valid_symbols</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceClient.get_available_exchanges">
+    <p>def <span class="ident">get_available_exchanges</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns a list of stock exchanges for which this client can return data</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceClient.get_available_exchanges', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceClient.get_available_exchanges" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_available_exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_exchange_list</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceClient.get_historical_data_for_stocks">
+    <p>def <span class="ident">get_historical_data_for_stocks</span>(</p><p>self, symbols, start_date, end_date, time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns historical data for all the provided ticker symbols in USD</p>
+<p>Args:</p>
+<ul>
+<li><code>symbols</code> - the ticker symbols for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>This method will skip all ticker symbols that are invalid for some reason or another</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceClient.get_historical_data_for_stocks', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceClient.get_historical_data_for_stocks" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_historical_data_for_stocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">symbols</span> <span class="k">if</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">is_valid_ticker</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+    <span class="n">historical_prices</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">]</span>
+    
+    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="n">future_to_stock</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">,</span> <span class="o">*</span><span class="n">arg</span><span class="p">):</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">future_to_stock</span><span class="p">):</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="n">future_to_stock</span><span class="p">[</span><span class="n">future</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">price_in_usd</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">historical_prices</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span> <span class="o">=</span> <span class="n">price_in_usd</span>
+    <span class="k">return</span> <span class="n">historical_prices</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceClient.get_historical_data_for_stocks_in_exchange">
+    <p>def <span class="ident">get_historical_data_for_stocks_in_exchange</span>(</p><p>self, exchange_name, start_date, end_date, time_interval, threshold_mcap=True, mcap_limit_in_millions=300)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns historical data for all ticker symbols in an exchange in USD that meet a 
+given mcap_limit</p>
+<p>Args:</p>
+<ul>
+<li><code>exchange_name</code> - string repr of the exchange for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+<li><code>threshold_mcap</code> - whether or not the stocks in the exchange should be filtered based on market
+    capitalization</li>
+<li><code>mcap_limit_in_millions</code> - the market cap threshold</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>The returned data is for the ticker symbols found in the provided exchange.</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceClient.get_historical_data_for_stocks_in_exchange', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceClient.get_historical_data_for_stocks_in_exchange" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">,</span>
+    <span class="n">threshold_mcap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="n">stocks_in_exch</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfmetadata</span><span class="o">.</span><span class="n">get_stocks_in_exchange</span><span class="p">(</span><span class="n">exchange_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">is_valid_ticker</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="n">threshold_mcap</span><span class="p">:</span>
+        <span class="n">stocks_in_exch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_based_on_mcap_limit</span><span class="p">(</span><span class="n">stocks_in_exch</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">)</span>
+    <span class="n">yahoo_time_interval</span> <span class="o">=</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">convert_TimeInterval_to_YahooTimeInterval</span><span class="p">(</span><span class="n">time_interval</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stocks_in_exch</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="n">stock_exch_native_currency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_native_currency_for_ticker</span><span class="p">(</span><span class="n">stocks_in_exch</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">exchange_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_get_exchange_rate</span><span class="p">(</span><span class="n">stock_exch_native_currency</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span>
+    <span class="n">historical_prices</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">stocks_in_exch</span><span class="p">]</span>
+    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="n">future_to_stock</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">,</span> <span class="o">*</span><span class="n">arg</span><span class="p">):</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">future_to_stock</span><span class="p">):</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="n">future_to_stock</span><span class="p">[</span><span class="n">future</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">price_in_native_currency</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">historical_prices</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">rate</span> <span class="o">*</span> <span class="n">price</span>
+                    <span class="k">for</span> <span class="n">rate</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">exchange_rate</span><span class="p">,</span> <span class="n">price_in_native_currency</span><span class="p">)</span>
+                <span class="p">]</span>
+    <span class="k">return</span> <span class="n">historical_prices</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceClient.get_historical_stock_prices">
+    <p>def <span class="ident">get_historical_stock_prices</span>(</p><p>self, symbol, start_date, end_date, time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method retrieves historical price data for a ticker symbol in USD.</p>
+<p>Args:</p>
+<ul>
+<li><code>symbol</code> - the ticker symbol for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A list of the historical stock price data in USD. The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>In theory, the default currency does not need to be USD, it only needs to be consistent
+within the application. In practice, USD is by far the most commonly used and hence is preferred</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceClient.get_historical_stock_prices', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceClient.get_historical_stock_prices" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_historical_stock_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">is_valid_ticker</span><span class="p">(</span><span class="n">symbol</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">IllegalArgument</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> is not a valid ticker symbol&#39;</span> <span class="o">%</span> <span class="n">symbol</span><span class="p">)</span>
+    <span class="n">yahoo_time_interval</span> <span class="o">=</span> <span class="n">HelperUtils</span><span class="o">.</span><span class="n">convert_TimeInterval_to_YahooTimeInterval</span><span class="p">(</span><span class="n">time_interval</span><span class="p">)</span>
+    <span class="n">stock_native_curr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_native_currency_for_ticker</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+    <span class="n">exch_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_get_exchange_rate</span><span class="p">(</span><span class="n">stock_native_curr</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span>
+    <span class="n">historical_prices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfgateway</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">yahoo_time_interval</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">rate</span> <span class="o">*</span> <span class="n">price</span>
+        <span class="k">for</span> <span class="n">rate</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">exch_rate</span><span class="p">,</span> <span class="n">historical_prices</span><span class="p">)</span>
+    <span class="p">]</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="arkstock.YahooFinanceClient.global_exchange_list" class="name">var <span class="ident">global_exchange_list</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Stock exchanges for which data is available</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="arkstock.YahooFinanceClient.yfgateway" class="name">var <span class="ident">yfgateway</span></p>
+            
+
+            
+  
+    <div class="desc"><p>A pointer to the YahooFinanceGateway module</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="arkstock.YahooFinanceClient.yfmetadata" class="name">var <span class="ident">yfmetadata</span></p>
+            
+
+            
+  
+    <div class="desc"><p>A yahoo finance metadata client</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.YahooFinanceMetadataClient" class="name">class <span class="ident">YahooFinanceMetadataClient</span></p>
+      
+  
+    <div class="desc"><p>A StockMetadataClient that retrieves metadata for most stocks and exchanges in YahooFinance</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceMetadataClient', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceMetadataClient" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">YahooFinanceMetadataClient</span><span class="p">(</span><span class="n">AbstractStockMetadataClient</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A StockMetadataClient that retrieves metadata for most stocks and exchanges in YahooFinance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">abs_file_path</span>
+    <span class="sd">&#39;&#39;&#39;The absolute path to the file where the metadata is stored&#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_get_all_stock_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Return all stock metadata mappings in the classes file path</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="n">stock_md</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">metadata_file</span><span class="p">:</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">metadata_file</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+                <span class="n">stock_md</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">stock_md</span>
+
+    <span class="k">def</span> <span class="nf">_retrieve_stock_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">],</span>
+        <span class="n">transformator</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a generator that applies a transformation to every valid stock metadata object</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `filter_func` - the function that determines if a given row in a data file </span>
+<span class="sd">            should be used</span>
+<span class="sd">        * `transformator` - the transformation that should be applied to every valid stock</span>
+<span class="sd">            metadata object</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A generator with the transformed stock metadata object</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        &gt; Throws IOException</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filtered_stock_md</span> <span class="o">=</span> <span class="p">[</span><span class="n">md_obj</span> <span class="k">for</span> <span class="n">md_obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_all_stock_metadata</span><span class="p">()</span> <span class="k">if</span> <span class="n">filter_func</span><span class="p">(</span><span class="n">md_obj</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">transformator</span><span class="p">(</span><span class="n">md_obj</span><span class="p">)</span> <span class="k">for</span> <span class="n">md_obj</span> <span class="ow">in</span> <span class="n">filtered_stock_md</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_filter_for_exchange</span><span class="p">(</span><span class="n">exchange</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">stock_md</span><span class="p">:</span> <span class="n">stock_md</span><span class="p">[</span><span class="s1">&#39;Exchange&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">exchange</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_retrieve_ticker</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">stock_md</span><span class="p">:</span> <span class="n">stock_md</span><span class="p">[</span><span class="s1">&#39;Ticker&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all ticker symbols that correspond to an exchange</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">        * `exchange` - a string repr of the exchange for which the tickers should be retrieved</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &gt; A generator over the tickers present in the exchange</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve_stock_metadata</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_filter_for_exchange</span><span class="p">(</span><span class="n">exchange</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve_ticker</span><span class="p">())</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.YahooFinanceMetadataClient">YahooFinanceMetadataClient</a></li>
+          <li><a href="#arkstock.AbstractStockMetadataClient">AbstractStockMetadataClient</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Class variables</h3>
+            <div class="item">
+            <p id="arkstock.YahooFinanceMetadataClient.file_name" class="name">var <span class="ident">file_name</span></p>
+            
+
+            
+  
+    <div class="desc"><p>The absolute path to the file where the metadata is stored</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceMetadataClient.get_stocks_in_exchange">
+    <p>def <span class="ident">get_stocks_in_exchange</span>(</p><p>self, exchange)</p>
+    </div>
+    
+    <p class="inheritance">
+     <strong>Inheritance:</strong>
+       <code><a href="#arkstock.AbstractStockMetadataClient">AbstractStockMetadataClient</a></code>.<code><a href="#arkstock.AbstractStockMetadataClient.get_stocks_in_exchange">get_stocks_in_exchange</a></code>
+    </p>
+
+    
+  
+    <div class="desc"><p>Retrieve all ticker symbols that correspond to an exchange</p>
+<p>Args:</p>
+<ul>
+<li><code>exchange</code> - a string repr of the exchange for which the tickers should be retrieved</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A generator over the tickers present in the exchange</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceMetadataClient.get_stocks_in_exchange', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceMetadataClient.get_stocks_in_exchange" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve all ticker symbols that correspond to an exchange</span>
+<span class="sd">    Args:</span>
+<span class="sd">    * `exchange` - a string repr of the exchange for which the tickers should be retrieved</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    &gt; A generator over the tickers present in the exchange</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve_stock_metadata</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_for_exchange</span><span class="p">(</span><span class="n">exchange</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve_ticker</span><span class="p">())</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.YahooFinanceStatefulClient" class="name">class <span class="ident">YahooFinanceStatefulClient</span></p>
+      
+  
+    <div class="desc"><p>An concrete stock database client that implementes the methods that need to be implemented for
+interoperability with the rest of the code. This client is based on the yahoo finance API.</p>
+<p>This client is stateful and is as such not threadsafe.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceStatefulClient', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceStatefulClient" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">YahooFinanceStatefulClient</span><span class="p">(</span><span class="n">AbstractStatefulStockDatabaseClient</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    An concrete stock database client that implementes the methods that need to be implemented for</span>
+<span class="sd">    interoperability with the rest of the code. This client is based on the yahoo finance API.</span>
+
+<span class="sd">    This client is stateful and is as such not threadsafe.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span> <span class="o">=</span> <span class="n">YahooFinanceClient</span><span class="p">()</span>
+        <span class="n">time_interval</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">weeks</span>
+        <span class="n">end_date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">weekday</span><span class="p">())</span>
+        <span class="n">start_date</span> <span class="o">=</span> <span class="n">end_date</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">start_date</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">end_date</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span> <span class="o">=</span> <span class="n">time_interval</span>
+
+    <span class="k">def</span> <span class="nf">get_historical_stock_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_historical_data_for_stocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_historical_data_for_stocks</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">threshold_mcap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="n">exchange_name</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span><span class="p">,</span> <span class="n">threshold_mcap</span><span class="o">=</span><span class="n">threshold_mcap</span><span class="p">,</span>
+            <span class="n">mcap_limit_in_millions</span><span class="o">=</span><span class="n">mcap_limit_in_millions</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_available_exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_available_exchanges</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.YahooFinanceStatefulClient">YahooFinanceStatefulClient</a></li>
+          <li><a href="#arkstock.AbstractStatefulStockDatabaseClient">AbstractStatefulStockDatabaseClient</a></li>
+          <li><a href="#arkstock.AbstractStockDatabaseClient">AbstractStockDatabaseClient</a></li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceStatefulClient.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Initialize self.  See help(type(self)) for accurate signature.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceStatefulClient.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceStatefulClient.__init__" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span> <span class="o">=</span> <span class="n">YahooFinanceClient</span><span class="p">()</span>
+    <span class="n">time_interval</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">weeks</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">weekday</span><span class="p">())</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">end_date</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceStatefulClient.get_available_exchanges">
+    <p>def <span class="ident">get_available_exchanges</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns a list of stock exchanges for which this client can return data</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceStatefulClient.get_available_exchanges', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceStatefulClient.get_available_exchanges" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_available_exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_available_exchanges</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks">
+    <p>def <span class="ident">get_historical_data_for_stocks</span>(</p><p>self, symbols)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns historical data for all the provided ticker symbols in USD</p>
+<p>Args:</p>
+<ul>
+<li><code>symbols</code> - the ticker symbols for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>This method will skip all ticker symbols that are invalid for some reason or another</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_historical_data_for_stocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_historical_data_for_stocks</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks_in_exchange">
+    <p>def <span class="ident">get_historical_data_for_stocks_in_exchange</span>(</p><p>self, exchange_name, threshold_mcap=True, mcap_limit_in_millions=300)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method returns historical data for all ticker symbols in an exchange in USD that meet a 
+given mcap_limit</p>
+<p>Args:</p>
+<ul>
+<li><code>exchange_name</code> - string repr of the exchange for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+<li><code>threshold_mcap</code> - whether or not the stocks in the exchange should be filtered based on market
+    capitalization</li>
+<li><code>mcap_limit_in_millions</code> - the market cap threshold</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A dict mapping a ticker symbol to a list of historical stock price data in USD.
+The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>The returned data is for the ticker symbols found in the provided exchange.</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks_in_exchange', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceStatefulClient.get_historical_data_for_stocks_in_exchange" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">threshold_mcap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mcap_limit_in_millions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_historical_data_for_stocks_in_exchange</span><span class="p">(</span><span class="n">exchange_name</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span><span class="p">,</span> <span class="n">threshold_mcap</span><span class="o">=</span><span class="n">threshold_mcap</span><span class="p">,</span>
+        <span class="n">mcap_limit_in_millions</span><span class="o">=</span><span class="n">mcap_limit_in_millions</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceStatefulClient.get_historical_stock_prices">
+    <p>def <span class="ident">get_historical_stock_prices</span>(</p><p>self, symbol)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method retrieves historical price data for a ticker symbol in USD.</p>
+<p>Args:</p>
+<ul>
+<li><code>symbol</code> - the ticker symbol for which you wish to retrieve data</li>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>A list of the historical stock price data in USD. The most recent price should be at index 0.</p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+<p>In theory, the default currency does not need to be USD, it only needs to be consistent
+within the application. In practice, USD is by far the most commonly used and hence is preferred</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceStatefulClient.get_historical_stock_prices', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceStatefulClient.get_historical_stock_prices" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">get_historical_stock_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yfclient</span><span class="o">.</span><span class="n">get_historical_stock_prices</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="arkstock.YahooFinanceStatefulClient.set_state">
+    <p>def <span class="ident">set_state</span>(</p><p>self, start_date, end_date, time_interval)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>This method sets the class wide execution state for stateful database clients</p>
+<p>Args:</p>
+<ul>
+<li><code>start_date</code> - the start of the time range for which you would like to get data</li>
+<li><code>end_date</code> - the end of the time range for which you would like to get data</li>
+<li><code>time_interval</code> - the time interval at which you would like to get data for the given time range</li>
+</ul>
+<p>Returns:</p>
+<blockquote>
+<p>None</p>
+</blockquote></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooFinanceStatefulClient.set_state', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooFinanceStatefulClient.set_state" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">TimeInterval</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">start_date</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">end_date</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">time_interval</span> <span class="o">=</span> <span class="n">time_interval</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="arkstock.YahooFinanceStatefulClient.yfclient" class="name">var <span class="ident">yfclient</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="arkstock.YahooTimeInterval" class="name">class <span class="ident">YahooTimeInterval</span></p>
+      
+  
+    <div class="desc"><p>An enum to encapsulate yahoo finance specific time interval</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-arkstock.YahooTimeInterval', this);">Show source &equiv;</a></p>
+  <div id="source-arkstock.YahooTimeInterval" class="source">
+    <div class="codehilite"><pre><span class="k">class</span> <span class="nc">YahooTimeInterval</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    An enum to encapsulate yahoo finance specific time interval</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">weeks</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="sd">&#39;&#39;&#39;TimeInterval enum value to denote a time interval of 1 week i.e. 7 days&#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span> <span class="c1"># string specific to yahoo finance that represents that time range</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">days</span> <span class="o">=</span> <span class="n">days</span> <span class="c1"># interval length in days</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#arkstock.YahooTimeInterval">YahooTimeInterval</a></li>
+          <li>enum.Enum</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Class variables</h3>
+            <div class="item">
+            <p id="arkstock.YahooTimeInterval.name" class="name">var <span class="ident">name</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="arkstock.YahooTimeInterval.value" class="name">var <span class="ident">value</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="arkstock.YahooTimeInterval.weeks" class="name">var <span class="ident">weeks</span></p>
+            
+
+            
+  
+    <div class="desc"><p>TimeInterval enum value to denote a time interval of 1 week i.e. 7 days</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+
+    <h2 class="section-title" id="header-submodules">Sub-modules</h2>
+      <div class="item">
+      <p class="name"><a href="diversify.m.html">arkstock.diversify</a></p>
+      
+  
+    <div class="desc"><p>This is a module that defines functions that can be used to diversify a portfolio given a set of
+required stocks and the much larger set of viable stocks.</p></div>
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="helper.m.html">arkstock.helper</a></p>
+      
+  
+    <div class="desc"><p>This module provides helper functions that extract information from stocks and diversify a portfolio</p></div>
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="optimize.m.html">arkstock.optimize</a></p>
+      
+  
+    <div class="desc"><p>This is a module that defines functions that can be used to optimize the weights in a diversified portfolio</p></div>
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="yahoo_finance_gateway.m.html">arkstock.yahoo_finance_gateway</a></p>
+      
+  
+    <div class="desc"><p>A module that defines a set of method used to retrieve data from yahoo finance.</p>
+<p>Due to the singleton nature of modules in python, all methods must inherently be functional.</p></div>
+
+      </div>
+  </section>
+
+    </article>
+  <div class="clear"> </div>
+  <footer id="footer">
+    <p>
+      Documentation generated by
+      <a href="https://github.com/BurntSushi/pdoc">pdoc 0.3.2</a>
+    </p>
+
+    <p>pdoc is in the public domain with the
+      <a href="http://unlicense.org">UNLICENSE</a></p>
+
+    <p>Design by <a href="http://nadh.in">Kailash Nadh</a></p>
+  </footer>
+</div>
+</body>
+</html>
